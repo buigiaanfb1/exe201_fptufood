@@ -1,13 +1,26 @@
 
 import { Button, Form, Input } from 'antd';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
+import { LoginModel } from '../models/LoginModel';
+import { auth } from "../firebase/firebase-config";
 
 const LoginBox: React.FC = () => {
     const [emailInput, setEmailInput] = useState<string>('')
     const [passwordInput, setPasswordInput] = useState<string>('')
 
-    const onSubmit = (values: any) => {
-        console.log('Success:', values);
+    const onSubmit = async (data: LoginModel) => {
+        const { email, password } = data
+        try {
+            const user = await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+            console.log(user);
+        } catch (error: any) {
+            console.log(error.message);
+        }
     };
     return (
         <Form
@@ -19,8 +32,8 @@ const LoginBox: React.FC = () => {
             autoComplete="off"
         >
             <Form.Item
-                label="Username"
-                name="username"
+                label="email"
+                name="email"
                 rules={[{ required: true, message: 'Please input your username!' }]}
             >
                 <Input />
