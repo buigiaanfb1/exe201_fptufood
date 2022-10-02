@@ -3,11 +3,6 @@ import LoginBox from '../component/login';
 import { FoodItem } from '../models/FoodItem';
 import { foodItemsService } from '../services/foodItems';
 
-
-
-
-
-
 const LoginPage: React.FC = () => {
 
   const [foodList, setFoodList] = useState<FoodItem[]>([])
@@ -29,7 +24,11 @@ const LoginPage: React.FC = () => {
         <LoginBox />
         {foodList.map((food) => {
           return (
-            <h1>{food.data?.name}</h1>
+            <>
+              <h1>{food.data?.name}</h1>
+              <h1>{food.data?.name}</h1>
+            </>
+
           )
         })}
       </div>
