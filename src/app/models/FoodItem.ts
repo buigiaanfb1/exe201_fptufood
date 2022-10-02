@@ -1,5 +1,12 @@
-export interface FoodItem {
- name?:string
- price?:number
- imgage?:string
+export interface FoodItemData {
+
+    name?: string
+    price?: number
+    image?: string
 }
+
+export interface FoodItem {
+    id?: string
+    data?: FoodItemData
+}
+

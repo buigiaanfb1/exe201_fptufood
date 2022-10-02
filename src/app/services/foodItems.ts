@@ -15,10 +15,12 @@ const usersCollectionRef = collection(db, FOOD_COLLECTION);
 const getItems = async (): Promise<FoodItem[]> => {
     const data = await getDocs(usersCollectionRef);
     var listItem: FoodItem[] = []
-    data.docs.map((doc) => listItem.push(({ ...doc.data(), id: doc.id })))
-
+    data.docs.map((doc) => listItem.push(({ data:{ ...doc.data() }, id: doc.id })))
     return listItem
 }
 
 
 
+export const foodItemsService = {
+    getItems
+}
