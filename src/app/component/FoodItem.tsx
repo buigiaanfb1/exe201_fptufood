@@ -11,6 +11,7 @@ const FoodItem: React.FC<FoodItem> = (item) => {
             <h1>{data?.name}</h1>
             <h1>{data?.price}</h1>
             <image>{data?.image}</image>
+            <image>{data?.image}</image>
         </>
 
     )
