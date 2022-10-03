@@ -1,0 +1,43 @@
+.login-page-container {
+    display: flex;
+}
+
+.food-delivery  {
+    height: 90vh;
+}
+
+.login-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30em;
+   
+    height: 40vh;
+    width: 100%;
+    margin-top: 10em;
+    margin-right: 5em;
+    border-radius: 30px;
+    box-shadow: inset 5px 5px 15px #fb9d47;
+}
+
+.custom-shape-divider-bottom-1664716324 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1664716324 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 121px;
+}
+
+.custom-shape-divider-bottom-1664716324 .shape-fill {
+    fill: #fb9d47;
+}
+

@@ -1,11 +1,10 @@
 export interface FoodItemData {
-
     name?: string
     price?: number
     image?: string
 }
 
-export interface FoodItem {
+export interface FoodItemModel {
     id?: string
     data?: FoodItemData
 }
