@@ -1,5 +1,63 @@
 .food-list {
     display: flex;
-    flex-direction: column;
-    row-gap: 0.7rem;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.7rem;
+}
+
+.background-wrapper {
+  background-image: url("./../../asset/main-banner.jpeg");
+  background-color: #cccccc;
+  height: calc(100vh - 70px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  margin-top: 70px;
+}
+
+.wrapper {
+    display: flex;
+    height: 100%;
+}
+
+.wrapper_foods {
+    width: 50%;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    margin: 2rem;
+    height: calc(100% - 120px);
+
+}
+
+.search {
+    width: 50%;
+    padding: 2rem;
+    color: white;
+    display: block;
+    text-align: left;
+}
+
+.download {
+    display: flex;
+}
+
+.download img {
+    fill: white;
+    justify-self: flex-start;
+    width: 175px;
+    height: 100px;
+    object-fit:contain;
+}
+
+input {
+    height: 30px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 0.625rem;
+    border: none;
+    outline: none;
+    font-size: 1.125rem;
 }
