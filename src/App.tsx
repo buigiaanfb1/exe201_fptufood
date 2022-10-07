@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router, Routes,
-  Route, Link
-} from 'react-router-dom';
-
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import './App.css';
 import HomePage from './app/pages/home/HomePage';
@@ -14,12 +10,10 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<LoginPage />}>                  
-          </Route>
-          <Route path="/home" element={<HomePage />}>                  
-          </Route>
+          <Route path="/" element={<LoginPage />}></Route>
+          <Route path="/home" element={<HomePage />}></Route>
         </Routes>
-      </Router>,
+      </Router>
     </div>
   );
 }
