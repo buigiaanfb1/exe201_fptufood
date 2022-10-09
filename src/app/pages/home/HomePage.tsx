@@ -6,6 +6,10 @@ import { foodItemsService } from '../../services/foodItems';
 import './style.css';
 import android from './../../asset/android.png';
 import ios from './../../asset/ios.png';
+import { useAppSelector } from '../../hooks';
+import { Button } from 'antd';
+import "antd/dist/antd.css";
+import CartModal from '../../component/CartModal/CartModal';
 
 const HomePage: React.FC = () => {
   const [foodList, setFoodList] = useState<FoodItemModel[]>([]);
@@ -17,6 +21,7 @@ const HomePage: React.FC = () => {
     window.document.title = 'FPT-Food';
     getUsers();
   }, []);
+  const { totalItemInCart } = useAppSelector ((state) => state.cart);
   return (
     <>
       <Navbar />
@@ -40,20 +45,18 @@ const HomePage: React.FC = () => {
               <p>Mì phở</p>
               <p>Cơm hộp</p>
             </div>
-            <h3>
-              Sử dụng App ShopeeFood để có nhiều giảm giá và trải nghiệm tốt hơn
-            </h3>
-            <div className="download">
-              <img src={ios} className="ios" />
-              <img src={android} />
-            </div>
           </div>
           <div className="wrapper_foods">
+            <div>
+              Total Item : {totalItemInCart}
+            </div>
             <div className="food-list">
               {foodList.map((food) => {
                 return <FoodItem item={food} />;
               })}
+              
             </div>
+           <CartModal/>
           </div>
         </div>
       </div>

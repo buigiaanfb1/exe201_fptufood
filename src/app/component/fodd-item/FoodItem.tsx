@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-redeclare */
+import { Button } from 'antd';
 import { useAppDispatch } from '../../hooks';
 import { FoodItemModel } from '../../models/FoodItem';
-import { addToCart, decreaseQuantity } from '../../slice/cart';
+import { addToCart, RemoveItemFromCart } from '../../slice/cart';
 import './style.css';
+import "antd/dist/antd.css";
 
 interface Props {
   item: FoodItemModel;
@@ -21,23 +23,23 @@ const FoodItem: React.FC<Props> = ({ item }) => {
       </div>
 
       <div>
-        <button
+        <Button
+        type="primary" style={{ background: "#ee4d2d", borderColor: "#ee4d2d" }}
           onClick={() => {
             dispatch(addToCart({ item }));
           }}
         >
-          {' '}
-          Add To Cart{' '}
-        </button>
-
-        <button
+          Add To Cart
+        </Button>
+        <Button
+        className='item-btn'
+         type="primary" style={{ background: "#ee4d2d", borderColor: "#ee4d2d" }}
           onClick={() => {
-            dispatch(decreaseQuantity({ item }));
+            dispatch(RemoveItemFromCart({ item }));
           }}
         >
-          {' '}
-          Reomve From Cart{' '}
-        </button>
+          Reomve From Cart
+        </Button>
       </div>
     </div>
   );

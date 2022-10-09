@@ -1,4 +1,4 @@
-nav {
+.top-bar {
   position: absolute;
   top: 0;
   left: 0;
@@ -9,13 +9,21 @@ nav {
   flex-direction: row;
   align-items: center;
   background-color: white;
+  justify-content: space-between;
 }
 
-nav h1 {
+.cart-icon{
+  margin-right: 3rem;
+  cursor: pointer;
+  font-size: large;
+  font: 5rem ;
+}
+
+.top-bar h1 {
   color: #ee4d2d;
-margin: 2rem;
-font-weight: 800;
-font-size: 2rem;
+  margin: 2rem;
+  font-weight: 800;
+  font-size: 2rem;
 }
 
 .keyword_wrapper {
@@ -23,7 +31,7 @@ font-size: 2rem;
   width: 100%;
 }
 
-.keyword_wrapper p{
+.keyword_wrapper p {
   display: inline-block;
   border-radius: 8px;
   border: 1px solid white;
