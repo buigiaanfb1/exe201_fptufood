@@ -1,29 +1,53 @@
 import React from 'react';
 import './style.css';
-import { ShoppingCartOutlined } from '@ant-design/icons';
+import {
+  ShoppingCartOutlined,
+  UserOutlined,
+  SearchOutlined,
+} from '@ant-design/icons';
 import { useAppDispatch } from '../../hooks';
 import { setModalVisible } from '../../slice/modal';
 import { ModalList } from '../../util/constant';
-
 const Navbar: React.FC = () => {
-
-const dispatch =useAppDispatch ()
+  const dispatch = useAppDispatch();
 
   return (
     <>
-      <div className='top-bar'>
-        <h1>F.FOOD</h1>
+      <div className="on-sale-wrapper">
+        <p>giảm giá ship 30% cho đơn hàng đầu tiên</p>
+      </div>
+      <div className="top-bar">
+        <div className="links">
+          <h1>F.FOOD</h1>
+          <ul>
+            <li>Shop</li>
+            <li>About us</li>
+            <li>Contact us</li>
+            <li>Policy</li>
+          </ul>
+        </div>
 
-        <ShoppingCartOutlined
-          style={{ fontSize: '2rem', color: '#ee4d2d' }}
-          className='cart-icon'
-          onClick={() => {
-            dispatch(setModalVisible( {modal:ModalList.CART_MODAL,visible:true}))
-          }}
-        />
+        <div className="icon-items">
+          <ShoppingCartOutlined
+            style={{ fontSize: '1.5rem', color: '#ee4d2d' }}
+            className="cart-icon"
+            onClick={() => {
+              dispatch(
+                setModalVisible({ modal: ModalList.CART_MODAL, visible: true })
+              );
+            }}
+          />
+          <UserOutlined
+            style={{ fontSize: '1.5rem', color: '#ee4d2d' }}
+            className="cart-icon"
+          />
+          <SearchOutlined
+            style={{ fontSize: '1.5rem', color: '#ee4d2d' }}
+            className="cart-icon"
+          />
+        </div>
       </div>
     </>
-
   );
 };
 

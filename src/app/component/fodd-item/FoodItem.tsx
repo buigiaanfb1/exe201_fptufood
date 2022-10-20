@@ -3,9 +3,10 @@
 import { Button } from 'antd';
 import { useAppDispatch } from '../../hooks';
 import { FoodItemModel } from '../../models/FoodItem';
-import { addToCart, RemoveItemFromCart } from '../../slice/cart';
+import { addToCart } from '../../slice/cart';
+import { PlusOutlined } from '@ant-design/icons';
 import './style.css';
-import "antd/dist/antd.css";
+import 'antd/dist/antd.css';
 
 interface Props {
   item: FoodItemModel;
@@ -13,35 +14,34 @@ interface Props {
 const FoodItem: React.FC<Props> = ({ item }) => {
   const dispatch = useAppDispatch();
   return (
-    <div className="food-item">
-      <div className="image-container">
-        <img src={item?.data?.image} alt="food" />
-      </div>
-      <div>
-        <h3>{item?.data?.name}</h3>
-        <h1>{item?.data?.price}</h1>
-      </div>
+    <>
+      <div className="food-item">
+        <div className="food-item-img-title">
+          <img src={item?.data?.image} alt="food" />
+          <p>{item?.data?.name}</p>
+        </div>
+        <div className="food-item-price">
+          <p>{item?.data?.price}VNĐ</p>
 
-      <div>
-        <Button
-        type="primary" style={{ background: "#ee4d2d", borderColor: "#ee4d2d" }}
-          onClick={() => {
-            dispatch(addToCart({ item }));
-          }}
-        >
-          Add To Cart
-        </Button>
-        <Button
-        className='item-btn'
-         type="primary" style={{ background: "#ee4d2d", borderColor: "#ee4d2d" }}
-          onClick={() => {
-            dispatch(RemoveItemFromCart({ item }));
-          }}
-        >
-          Reomve From Cart
-        </Button>
+          <PlusOutlined
+            style={{ fontSize: '1.25rem', height: '20px' }}
+            onClick={() => {
+              dispatch(addToCart({ item }));
+            }}
+          />
+          {/* <Button
+            className="item-btn"
+            type="primary"
+            style={{ background: '#ee4d2d', borderColor: '#ee4d2d' }}
+            onClick={() => {
+              dispatch(RemoveItemFromCart({ item }));
+            }}
+          >
+            Reomve From Cart
+          </Button> */}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

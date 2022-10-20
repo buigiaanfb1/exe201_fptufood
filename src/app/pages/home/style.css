@@ -6,7 +6,8 @@
 }
 
 .background-wrapper {
-  background-image: url("./../../asset/main-banner.jpeg");
+  background-image: url("./../../asset/homeBackground.png");
+  background-attachment: fixed;
   background-color: #cccccc;
   height: calc(100vh - 70px);
   background-position: center;
@@ -15,6 +16,32 @@
   position: relative;
   overflow: hidden;
   margin-top: 70px;
+}
+
+.slogan {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slogan button {
+    margin-top: 1rem;
+    padding: 10px 48px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.slogan h1 {
+    font-size: 6rem;
+    margin: 0;
+    color: #fff;
+    line-height: 6rem;
+    font-weight: 700;
 }
 
 .wrapper {
@@ -60,4 +87,47 @@ input {
     border: none;
     outline: none;
     font-size: 1.125rem;
+}
+
+.introduce-services {
+    background-color: #000;
+    color: #fff;
+    padding: 2rem 0;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.introduce-services img {
+    width: 73px;
+    height: 73px;
+}
+
+.introduce-services p {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+.container-services {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.food-for-you-wrapper {
+    background-color: #FFF7EE;
+    padding: 2rem 10rem;
+}
+
+.food-for-you-wrapper h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.15rem;
+}
+
+.food-items-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-flow: wrap;
 }
