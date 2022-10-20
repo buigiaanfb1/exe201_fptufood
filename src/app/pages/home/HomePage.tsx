@@ -6,15 +6,19 @@ import { foodItemsService } from '../../services/foodItems';
 import './style.css';
 import android from './../../asset/android.png';
 import ios from './../../asset/ios.png';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { Button } from 'antd';
 import "antd/dist/antd.css";
 import CartModal from '../../component/CartModal/CartModal';
+import { getItems } from '../../slice/item';
 
 const HomePage: React.FC = () => {
   const [foodList, setFoodList] = useState<FoodItemModel[]>([]);
+const dispatch= useAppDispatch()
+
   const getUsers = async () => {
     const list = await foodItemsService.getItems();
+    dispatch(getItems())
     setFoodList(list);
   };
   useEffect(() => {

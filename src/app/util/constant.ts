@@ -1,4 +1,5 @@
 export const FOOD_COLLECTION = 'FPT-Food';
+export const ORDER = 'Order';
 
 
 
