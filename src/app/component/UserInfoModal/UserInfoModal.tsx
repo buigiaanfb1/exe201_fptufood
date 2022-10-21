@@ -55,15 +55,17 @@ const UserInfoModal: React.FC = () => {
                     <Form.Item
                         label="Name"
                         name="name"
-                        rules={[{ required: true, message: 'Please input your Name!' }]}
+                        rules={[{ required: true, message: 'Please input your name!' }]}
                     >
                         <Input />
                     </Form.Item>
-
                     <Form.Item
                         label="Phone Number"
                         name="phoneNumber"
-                        rules={[{ required: true, message: 'Please input your password!' }]}
+                        rules={[{
+                            required: true, message: 'Please input your phone number!',
+                            pattern: new RegExp('[0-9]{10}'),
+                        }]}
                     >
                         <Input />
                     </Form.Item>
@@ -73,10 +75,7 @@ const UserInfoModal: React.FC = () => {
                         </Button>
                     </Form.Item>
                 </Form>
-
             </Modal>
-
-
         </>
     );
 }

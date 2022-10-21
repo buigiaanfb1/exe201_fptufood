@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+
 import {
   ShoppingCartOutlined,
   UserOutlined,
@@ -8,9 +9,10 @@ import {
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { setModalVisible } from '../../slice/modal';
 import { ModalList } from '../../util/constant';
+import logo from '../../asset/logo.jpg';
 const Navbar: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { cart,totalItemInCart } = useAppSelector((state) => state.cart);
+  const { cart, totalItemInCart } = useAppSelector((state) => state.cart);
   return (
     <>
       <div className="on-sale-wrapper">
@@ -18,7 +20,9 @@ const Navbar: React.FC = () => {
       </div>
       <div className="top-bar">
         <div className="links">
-          <h1>F.FOOD</h1>
+          <div className='logo'>
+            <img src={logo} />
+          </div>
           <ul>
             <li>Shop</li>
             <li>About us</li>

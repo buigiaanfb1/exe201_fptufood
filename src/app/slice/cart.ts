@@ -19,6 +19,16 @@ const initialState: State = {
     totalItemInCart: 0
 };
 
+
+const clearCartCR: CR<{}> = (
+    state,
+    action,
+) => ({
+   ...state,
+   totalItemInCart:0,
+   cart:[]
+})
+
 const addToCartCR: CR<{ item: FoodItemModel }> = (
     state,
     action,
@@ -73,8 +83,6 @@ const increseQtyCR: CR<{ item: CartModel }> = (
         state.cart.push(cart)
     }
 }
-
-
 const RemoveItemFromCartCR: CR<{ item: FoodItemModel }> = (
     state,
     action,
@@ -147,10 +155,11 @@ const cart = createSlice({
         RemoveItemFromCart:RemoveItemFromCartCR,
         decreaseQty:decreaseQtyCR,
         increseQty:increseQtyCR,
+        clearCart:clearCartCR
     },
 })
 
-export const { addToCart,RemoveItemFromCart,decreaseQty ,increseQty} = cart.actions;
+export const { addToCart,RemoveItemFromCart,decreaseQty ,increseQty,clearCart} = cart.actions;
 
 
 export default cart.reducer;

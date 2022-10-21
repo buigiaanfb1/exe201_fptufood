@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks";
 import "antd/dist/antd.css";
 import { setModalVisible } from '../../slice/modal';
 import { ModalList, ORDER } from '../../util/constant';
-import { addToCart, decreaseQty, increseQty, RemoveItemFromCart } from "../../slice/cart";
+import { addToCart, clearCart, decreaseQty, increseQty, RemoveItemFromCart } from "../../slice/cart";
 import {
     collection,
     getDocs,
@@ -38,6 +38,7 @@ const CartModal: React.FC = () => {
             await addDoc(usersCollectionRef, { cart: cart, phoneNumber: User.phoneNumber, name:  User.name, deliveryTime: orderTime, orderDate: date }).then(()=>{
                 handleNotification(true, ` Thank You ${User.name} Your Order have been submit`);
             });
+            dispatch(clearCart({}))
         }
 
     }
