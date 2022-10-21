@@ -5,12 +5,12 @@ import {
   UserOutlined,
   SearchOutlined,
 } from '@ant-design/icons';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { setModalVisible } from '../../slice/modal';
 import { ModalList } from '../../util/constant';
 const Navbar: React.FC = () => {
   const dispatch = useAppDispatch();
-
+  const { cart,totalItemInCart } = useAppSelector((state) => state.cart);
   return (
     <>
       <div className="on-sale-wrapper">
@@ -37,9 +37,15 @@ const Navbar: React.FC = () => {
               );
             }}
           />
+          {totalItemInCart}
           <UserOutlined
             style={{ fontSize: '1.5rem', color: '#ee4d2d' }}
             className="cart-icon"
+            onClick={() => {
+              dispatch(
+                setModalVisible({ modal: ModalList.USER_INFO_MODAL, visible: true })
+              );
+            }}
           />
           <SearchOutlined
             style={{ fontSize: '1.5rem', color: '#ee4d2d' }}

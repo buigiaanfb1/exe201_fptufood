@@ -5,5 +5,6 @@ export const ORDER = 'Order';
 
 export enum ModalList {
     CART_MODAL = 'CART_MODAL',
+    USER_INFO_MODAL = 'USER_INFO_MODAL',
     
   }

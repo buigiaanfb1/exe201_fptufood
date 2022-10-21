@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import 'antd/dist/antd.css';
 import CartModal from '../../component/CartModal/CartModal';
 import { getItems } from '../../slice/item';
+import UserInfoModal from '../../component/UserInfoModal/UserInfoModal';
 
 const HomePage: React.FC = () => {
   const [foodList, setFoodList] = useState<FoodItemModel[]>([]);
@@ -61,6 +62,7 @@ const HomePage: React.FC = () => {
         </div>
       </div>
       <CartModal />
+      <UserInfoModal />
     </>
   );
 };
