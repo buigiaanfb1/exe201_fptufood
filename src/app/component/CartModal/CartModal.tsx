@@ -15,6 +15,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase/firebase-config";
 import moment from 'moment';
+import { handleNotification } from "../../util/helper";
 
 const CartModal: React.FC = () => {
     const { CartModalVisible } = useAppSelector((state) => state.modal);
@@ -34,7 +35,9 @@ const CartModal: React.FC = () => {
         }
         else {
             const date = new Date()
-            await addDoc(usersCollectionRef, { cart: cart, phoneNumber: User.phoneNumber, name:  User.name, deliveryTime: orderTime, orderDate: date });
+            await addDoc(usersCollectionRef, { cart: cart, phoneNumber: User.phoneNumber, name:  User.name, deliveryTime: orderTime, orderDate: date }).then(()=>{
+                handleNotification(true, ` Thank You ${User.name} Your Order have been submit`);
+            });
         }
 
     }
