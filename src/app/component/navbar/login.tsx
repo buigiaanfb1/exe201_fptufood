@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
   return (
     <>
       <div className="on-sale-wrapper">
-        <p>giảm giá ship 30% cho đơn hàng đầu tiên</p>
+        <p>FOOD FOR FPTUER</p>
       </div>
       <div className="top-bar">
         <div className="links">
@@ -32,6 +32,10 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="icon-items">
+        <SearchOutlined
+            style={{ fontSize: '1.5rem', color: '#ee4d2d' }}
+            className="cart-icon"
+          />
           <ShoppingCartOutlined
             style={{ fontSize: '1.5rem', color: '#ee4d2d' }}
             className="cart-icon"
@@ -51,10 +55,7 @@ const Navbar: React.FC = () => {
               );
             }}
           />
-          <SearchOutlined
-            style={{ fontSize: '1.5rem', color: '#ee4d2d' }}
-            className="cart-icon"
-          />
+          
         </div>
       </div>
     </>

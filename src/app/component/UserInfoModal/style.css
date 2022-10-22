@@ -1,0 +1,18 @@
+.UserInfoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.UserInfoContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.UserInfoContent .ant-form-item {
+   width: 100%;
+}

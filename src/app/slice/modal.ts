@@ -9,12 +9,14 @@ import {
   interface State {
     CartModalVisible:boolean,
     UserInfoModalVisible:boolean,
+    ItemInfoModalVisible:boolean,
    
   }
   
   const initialState: State = {
     CartModalVisible:false,
-    UserInfoModalVisible:false
+    UserInfoModalVisible:true,
+    ItemInfoModalVisible:false
   };
   // const TYPE_PREFIX = 'modal/';
   type CR<T> = CaseReducer<State, PayloadAction<T>>;
@@ -32,6 +34,11 @@ import {
         return {
           ...state,
           UserInfoModalVisible: action.payload.visible,
+        };
+        case ModalList.ITEM_INFO_MODAL:
+        return {
+          ...state,
+          ItemInfoModalVisible: action.payload.visible,
         };
       default:
         return { ...state };

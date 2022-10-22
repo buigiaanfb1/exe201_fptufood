@@ -12,6 +12,7 @@ import 'antd/dist/antd.css';
 import CartModal from '../../component/CartModal/CartModal';
 import { getItems } from '../../slice/item';
 import UserInfoModal from '../../component/UserInfoModal/UserInfoModal';
+import ItemInfoModal from '../../component/ItemInfoModal/ItemInfoModal';
 
 const HomePage: React.FC = () => {
   const [foodList, setFoodList] = useState<FoodItemModel[]>([]);
@@ -19,6 +20,7 @@ const HomePage: React.FC = () => {
 
   const getUsers = async () => {
     const list = await foodItemsService.getItems();
+    console.log(list);
     dispatch(getItems());
     setFoodList(list);
   };
@@ -32,8 +34,9 @@ const HomePage: React.FC = () => {
       <Navbar />
       <div className="background-wrapper">
         <div className="slogan">
-          <h1>Less talk,</h1>
-          <h1>More eat.</h1>
+          <h1>ĐẶT MÓN NGON
+          </h1>
+          <h1>CÙNG F.FOOD</h1>
           <button>Order now</button>
         </div>
       </div>
@@ -41,11 +44,7 @@ const HomePage: React.FC = () => {
         <div className="container-services">
           <div>
             <img src={anvat} />
-            <p>Ăn vặt</p>
-          </div>
-          <div>
-            <img src={trangmieng} />
-            <p>Tráng miệng</p>
+            <p>Món Ăn</p>
           </div>
           <div>
             <img src={douong} />
@@ -63,6 +62,7 @@ const HomePage: React.FC = () => {
       </div>
       <CartModal />
       <UserInfoModal />
+      <ItemInfoModal/>
     </>
   );
 };

@@ -13,11 +13,13 @@ type CR<T> = CaseReducer<State, PayloadAction<T>>;
 interface State {
   listItems:FoodItemModel[]|[]
   getItemLoading:boolean
+  item:FoodItemModel|null
 }
 
 const initialState: State = {
     listItems:[],
-    getItemLoading:false
+    getItemLoading:false,
+    item:null
 };
 const TYPE_PREFIX = 'items/';
 
@@ -29,10 +31,19 @@ const getItems = createAsyncThunk(
     },
   );
 
+  const setItemDetailCR: CR<{ value: FoodItemModel }> = (
+    state,
+    action,
+) => ({
+    ...state,
+    item: action.payload.value
+})
+
 const items = createSlice({
     name: 'items',
     initialState,
     reducers: {
+      setItemDetail:setItemDetailCR,
     },
     extraReducers: (builder) => {
         // get file detail by id
@@ -49,12 +60,10 @@ const items = createSlice({
           ...state,
           getItemLoading: false,
         }));
-    
-       
       },
 })
 
-export const { } = items.actions;
+export const {setItemDetail } = items.actions;
 
 export{
     getItems,

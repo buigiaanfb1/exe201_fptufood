@@ -16,6 +16,7 @@ import {
 import { db } from "../../firebase/firebase-config";
 import moment from 'moment';
 import { setUser } from "../../slice/user";
+import './style.css'
 
 const UserInfoModal: React.FC = () => {
     const { UserInfoModalVisible } = useAppSelector((state) => state.modal);
@@ -33,48 +34,58 @@ const UserInfoModal: React.FC = () => {
     return (
         <>
             <Modal
-                width={1000}
-                title="User Information" open={UserInfoModalVisible}
+                title="Thông tin người dùng" open={UserInfoModalVisible}
                 onCancel={() => {
                     dispatch(setModalVisible({ modal: ModalList.USER_INFO_MODAL, visible: false }))
                 }}
                 footer={null}
             >
-                <Form
-                    name="basic"
-                    labelCol={{ span: 8 }}
-                    wrapperCol={{ span: 16 }}
-                    initialValues={{
-                        phoneNumber: User?.phoneNumber,
-                        name: User?.name,
-                    }}
-                    onFinish={onFinish}
-                    // onFinishFailed={onFinishFailed}
-                    autoComplete="off"
-                >
-                    <Form.Item
-                        label="Name"
-                        name="name"
-                        rules={[{ required: true, message: 'Please input your name!' }]}
+                <div className="UserInfoContainer" >
+                    <Form
+                        name="basic"
+                        // labelCol={{ span: 8 }}
+                        // wrapperCol={{ span: 16 }}
+                        initialValues={{
+                            phoneNumber: User?.phoneNumber,
+                            name: User?.name,
+                        }}
+                        onFinish={onFinish}
+                        // onFinishFailed={onFinishFailed}
+                        autoComplete="off"
                     >
-                        <Input />
-                    </Form.Item>
-                    <Form.Item
-                        label="Phone Number"
-                        name="phoneNumber"
-                        rules={[{
-                            required: true, message: 'Please input your phone number!',
-                            pattern: new RegExp('[0-9]{10}'),
-                        }]}
-                    >
-                        <Input />
-                    </Form.Item>
-                    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                        <Button type="primary" htmlType="submit" style={{ background: "#ee4d2d", borderColor: "#ee4d2d" }}>
-                            Submit
-                        </Button>
-                    </Form.Item>
-                </Form>
+                        <div className="UserInfoContent">
+                            <div>
+                                <h1>Chào mừng bạn đến với FFood </h1>
+                                <h4>Nhập tên và số điện thoại để tiếp tục </h4>
+                            </div>
+
+                            <Form.Item
+                                name="name"
+                                rules={[{ required: true, message: 'Vui lòng nhập tên !' }]}
+                            >
+                                <Input size="large" placeholder=" Tên của bạn" />
+                            </Form.Item>
+                            <Form.Item
+                                name="phoneNumber"
+                                rules={[{
+                                    required: true, message: 'Vui lòng nhập đúng số điện thoại!',
+                                    pattern: new RegExp('[0-9]{10}'),
+                                }]}
+                            >
+                                <Input size="large" placeholder=" Số điện thoại của bạn" />
+                            </Form.Item>
+                        </div>
+
+
+
+                        <Form.Item >
+                            <Button type="primary" htmlType="submit" style={{ background: "#ee4d2d", borderColor: "#ee4d2d", width: '400px' }}>
+                                Tiếp tục
+                            </Button>
+                        </Form.Item>
+                    </Form>
+                </div>
+
             </Modal>
         </>
     );

@@ -7,6 +7,9 @@ import { addToCart } from '../../slice/cart';
 import { PlusOutlined } from '@ant-design/icons';
 import './style.css';
 import 'antd/dist/antd.css';
+import { setModalVisible } from '../../slice/modal';
+import { ModalList } from '../../util/constant';
+import { setItemDetail } from '../../slice/item';
 
 interface Props {
   item: FoodItemModel;
@@ -21,8 +24,16 @@ const FoodItem: React.FC<Props> = ({ item }) => {
           <p>{item?.data?.name}</p>
         </div>
         <div className="food-item-price">
-          <p>{item?.data?.price}VNĐ</p>
-
+          <p>{item?.data?.price}.000VNĐ</p>
+          <Button
+            style={{ background: "white", borderColor: "white" }}
+            onClick={() => {
+              dispatch(setItemDetail({ value: item }))
+              dispatch(setModalVisible({ modal: ModalList.ITEM_INFO_MODAL, visible: true }))
+            }}
+          >
+            Xem Chi Tiết
+          </Button>
           <PlusOutlined
             style={{ fontSize: '1.25rem', height: '20px' }}
             onClick={() => {
