@@ -17,6 +17,7 @@ import { db } from "../../firebase/firebase-config";
 import moment from 'moment';
 import { setUser } from "../../slice/user";
 import './style.css'
+import { getCookie, setCookie } from "../../util/cookie";
 
 const UserInfoModal: React.FC = () => {
     const { UserInfoModalVisible } = useAppSelector((state) => state.modal);
@@ -29,6 +30,9 @@ const UserInfoModal: React.FC = () => {
         console.log('Success:', values);
         dispatch(setUser({ value: values }))
         dispatch(setModalVisible({ modal: ModalList.USER_INFO_MODAL, visible: false }))
+        setCookie({name:'userName',value:values.name})
+        setCookie({name:'phoneNumber',value:values.phoneNumber})
+       
     };
 
     return (
@@ -46,8 +50,8 @@ const UserInfoModal: React.FC = () => {
                         // labelCol={{ span: 8 }}
                         // wrapperCol={{ span: 16 }}
                         initialValues={{
-                            phoneNumber: User?.phoneNumber,
-                            name: User?.name,
+                            phoneNumber: getCookie('phoneNumber'),
+                            name: getCookie('userName'),
                         }}
                         onFinish={onFinish}
                         // onFinishFailed={onFinishFailed}

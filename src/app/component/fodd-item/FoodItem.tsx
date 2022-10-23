@@ -10,6 +10,7 @@ import 'antd/dist/antd.css';
 import { setModalVisible } from '../../slice/modal';
 import { ModalList } from '../../util/constant';
 import { setItemDetail } from '../../slice/item';
+import { handleNotification } from '../../util/helper';
 
 interface Props {
   item: FoodItemModel;
@@ -24,7 +25,7 @@ const FoodItem: React.FC<Props> = ({ item }) => {
           <p>{item?.data?.name}</p>
         </div>
         <div className="food-item-price">
-          <p>{item?.data?.price}.000VNĐ</p>
+          <p>{item?.data?.price}.000 VNĐ  </p>
           <Button
             style={{ background: "white", borderColor: "white" }}
             onClick={() => {
@@ -35,9 +36,10 @@ const FoodItem: React.FC<Props> = ({ item }) => {
             Xem Chi Tiết
           </Button>
           <PlusOutlined
-            style={{ fontSize: '1.25rem', height: '20px' }}
+            style={{ fontSize: '1.25rem', height: '20px' }} 
             onClick={() => {
               dispatch(addToCart({ item }));
+              handleNotification(true, 'Added to cart ! ');
             }}
           />
           {/* <Button

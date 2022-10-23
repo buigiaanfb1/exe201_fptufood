@@ -13,6 +13,11 @@ import CartModal from '../../component/CartModal/CartModal';
 import { getItems } from '../../slice/item';
 import UserInfoModal from '../../component/UserInfoModal/UserInfoModal';
 import ItemInfoModal from '../../component/ItemInfoModal/ItemInfoModal';
+import { getCookie } from '../../util/cookie';
+import { setModalVisible } from '../../slice/modal';
+import { ModalList } from '../../util/constant';
+import { setUser } from '../../slice/user';
+import { User } from '../../models/user';
 
 const HomePage: React.FC = () => {
   const [foodList, setFoodList] = useState<FoodItemModel[]>([]);
@@ -27,6 +32,16 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     window.document.title = 'FPT-Food';
     getUsers();
+   
+    if (getCookie('userName')!==''){
+      dispatch(setModalVisible({ modal: ModalList.USER_INFO_MODAL, visible: false }))
+    }
+    const user:User= {
+     name: getCookie('userName'),
+     phoneNumber:getCookie('phoneNumber')
+    }
+    dispatch(setUser({ value: user }))
+    
   }, []);
   const { totalItemInCart } = useAppSelector((state) => state.cart);
   return (
