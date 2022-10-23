@@ -56,7 +56,7 @@ const HomePage: React.FC = () => {
       </div>
       <div className="introduce-services">
         <div className="container-services">
-        <div onClick={async () => {
+        <div className='food_type' onClick={async () => {
             const list = await foodItemsService.getItems();
             setFoodList(list.filter(f => f.data?.type === 'food'));
             
@@ -64,7 +64,7 @@ const HomePage: React.FC = () => {
             <img src={anvat} />
             <p>Món Ăn</p>
           </div>
-          <div onClick={async () => {
+          <div className='food_type' onClick={async () => {
             const list = await foodItemsService.getItems();
             setFoodList(list.filter(f => f.data?.type === 'drink'));
           }}>
