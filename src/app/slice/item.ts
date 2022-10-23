@@ -31,6 +31,8 @@ const getItems = createAsyncThunk(
     },
   );
 
+
+
   const setItemDetailCR: CR<{ value: FoodItemModel }> = (
     state,
     action,
@@ -39,11 +41,33 @@ const getItems = createAsyncThunk(
     item: action.payload.value
 })
 
+const setlistItemCR: CR<{ value: string,list:FoodItemModel[] }> = (
+  state,
+  action,
+) => {
+  switch (action.payload.value) {
+    case 'drink':
+      return {
+        ...state,
+        listItems:action.payload.list ,
+      };
+      // case'drink':
+      // return {
+      //   ...state,
+      //   UserInfoModalVisible: action.payload.visible,
+      // };
+      
+    default:
+      return { ...state };
+  }
+}
+
 const items = createSlice({
     name: 'items',
     initialState,
     reducers: {
       setItemDetail:setItemDetailCR,
+      setlistItem:setlistItemCR
     },
     extraReducers: (builder) => {
         // get file detail by id
@@ -63,7 +87,7 @@ const items = createSlice({
       },
 })
 
-export const {setItemDetail } = items.actions;
+export const {setItemDetail,setlistItem } = items.actions;
 
 export{
     getItems,

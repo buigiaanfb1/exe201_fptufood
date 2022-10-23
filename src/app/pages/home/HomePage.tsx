@@ -10,7 +10,7 @@ import douong from '../../asset/douong.png';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import 'antd/dist/antd.css';
 import CartModal from '../../component/CartModal/CartModal';
-import { getItems } from '../../slice/item';
+import { getItems, setlistItem } from '../../slice/item';
 import UserInfoModal from '../../component/UserInfoModal/UserInfoModal';
 import ItemInfoModal from '../../component/ItemInfoModal/ItemInfoModal';
 import { getCookie } from '../../util/cookie';
@@ -22,28 +22,27 @@ import { User } from '../../models/user';
 const HomePage: React.FC = () => {
   const [foodList, setFoodList] = useState<FoodItemModel[]>([]);
   const dispatch = useAppDispatch();
-
+  const { listItems } = useAppSelector((state) => state.items);
   const getUsers = async () => {
     const list = await foodItemsService.getItems();
     console.log(list);
     dispatch(getItems());
-    setFoodList(list);
+    setFoodList(list.filter(f => f.data?.type === 'food'));
   };
   useEffect(() => {
     window.document.title = 'FPT-Food';
     getUsers();
-   
-    if (getCookie('userName')!==''){
+    if (getCookie('userName') !== '') {
       dispatch(setModalVisible({ modal: ModalList.USER_INFO_MODAL, visible: false }))
     }
-    const user:User= {
-     name: getCookie('userName'),
-     phoneNumber:getCookie('phoneNumber')
+    const user: User = {
+      name: getCookie('userName'),
+      phoneNumber: getCookie('phoneNumber')
     }
     dispatch(setUser({ value: user }))
-    
+
   }, []);
-  const { totalItemInCart } = useAppSelector((state) => state.cart);
+
   return (
     <>
       <Navbar />
@@ -57,11 +56,18 @@ const HomePage: React.FC = () => {
       </div>
       <div className="introduce-services">
         <div className="container-services">
-          <div>
+        <div onClick={async () => {
+            const list = await foodItemsService.getItems();
+            setFoodList(list.filter(f => f.data?.type === 'food'));
+            
+          }}>
             <img src={anvat} />
             <p>Món Ăn</p>
           </div>
-          <div>
+          <div onClick={async () => {
+            const list = await foodItemsService.getItems();
+            setFoodList(list.filter(f => f.data?.type === 'drink'));
+          }}>
             <img src={douong} />
             <p>Đồ uống</p>
           </div>
@@ -77,7 +83,7 @@ const HomePage: React.FC = () => {
       </div>
       <CartModal />
       <UserInfoModal />
-      <ItemInfoModal/>
+      <ItemInfoModal />
     </>
   );
 };

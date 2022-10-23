@@ -123,7 +123,7 @@ const CartModal: React.FC = () => {
                             </div>
 
                             <div>
-                                <Button style={{ width: 900 }} onClick={() => { placeOrder() }}> Place Order  </Button>
+                                <Button  type="primary" style={{ marginLeft:'30px', width: 900, background: "#ee4d2d", borderColor: "#ee4d2d" }} onClick={() => { placeOrder() }}> Place Order  </Button>
                             </div>
                         </>) : (<p style={{ color: 'red' }}>Your Cart Is Empty </p>)
                 }

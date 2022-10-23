@@ -34,11 +34,10 @@ const UserInfoModal: React.FC = () => {
         setCookie({name:'phoneNumber',value:values.phoneNumber})
        
     };
-
     return (
         <>
             <Modal
-                title="Thông tin người dùng" open={UserInfoModalVisible}
+                title="Hồ sơ của bạn" open={UserInfoModalVisible}
                 onCancel={() => {
                     dispatch(setModalVisible({ modal: ModalList.USER_INFO_MODAL, visible: false }))
                 }}
@@ -60,7 +59,7 @@ const UserInfoModal: React.FC = () => {
                         <div className="UserInfoContent">
                             <div>
                                 <h1>Chào mừng bạn đến với FFood </h1>
-                                <h4>Nhập tên và số điện thoại để tiếp tục </h4>
+                               
                             </div>
 
                             <Form.Item
