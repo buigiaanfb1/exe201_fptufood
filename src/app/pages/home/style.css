@@ -18,22 +18,62 @@
   margin-top: 70px;
 }
 
+.background-wrapper-sub {
+  background-image: url("./../../asset/homeBackgroundSub1.png");
+  background-color: #cccccc;
+  height: calc(100vh - 70px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
 .slogan {
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 70vw;
     transform: translate(-50%, -50%);
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 103px;
+    letter-spacing: -0.05em;
+}
+
+.slogan-sub {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: 70vw;
+    transform: translate(-50%, 0%);
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 103px;
+    letter-spacing: -0.05em;
+    font-family: 'SVN-Gratelos';
+
+}
+
+.background-wrapper-sub img {
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, 0%);
 }
 
 .slogan button {
-    margin-top: 1rem;
-    padding: 10px 48px;
-    background-color: rgba(255, 255, 255, 0.2);
+    padding: 13px 39px;
+    background-color: rgba(255, 255, 255, 0.3);
     color: #fff;
-    border: 2px solid #fff;
-    border-radius: 5rem;
-    font-weight: 700;
+    border: 1px solid #FFFFFF;    
+    border-radius: 30px;
     text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: 0em;
+    transform: translate(0, -1.5rem);
 }
 
 .slogan h1 {
@@ -42,6 +82,15 @@
     color: #fff;
     line-height: 6rem;
     font-weight: 700;
+}
+
+.slogan-sub h1 {
+    font-size: 110px;
+    font-weight: 500;
+    line-height: 3rem;
+    letter-spacing: 0em; 
+    color: #fff;
+  
 }
 
 .wrapper {
@@ -96,6 +145,7 @@ input {
     font-size: 1rem;
     text-transform: uppercase;
     font-weight: 700;
+    position: relative;
 }
 
 .introduce-services img {
@@ -117,6 +167,70 @@ input {
 .food-for-you-wrapper {
     background-color: #FFF7EE;
     padding: 2rem 10rem;
+    position: relative;
+}
+
+.about-us-wrapper {
+    background-color: #FFF7EE;
+    padding: 7rem 10rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.about-us-wrapper .item {
+    width: 88px !important;
+    height: 100px !important;
+}
+
+.about-us-wrapper .green {
+    position: absolute;
+    top: 0;
+    left: 7%;
+}
+
+.about-us-wrapper .blue {
+    position: absolute;
+    top: 20%;
+    right: 0%;
+}
+.about-us-wrapper .pink {
+    position: absolute;
+    bottom: -5%;
+    right: 0;
+}
+
+.about-us-wrapper .about-us-left {
+    width: 50%;
+    position: relative;
+}
+
+.about-us-wrapper .about-us-left img {
+    width: 80%;
+}
+
+.about-us-wrapper .about-us-right {
+    width: 50%;
+    text-align: left;
+    padding-left: 3rem;
+    padding-top: 7rem;
+}
+
+.about-us-wrapper .about-us-right h1 {
+    font-family: 'SVN-Gratelos';
+    font-size: 110px;
+    font-weight: 500;
+    line-height: 102px;
+    letter-spacing: 0em;
+    margin-bottom: 1.5rem;
+
+}
+
+.about-us-wrapper .ffood-circle {
+    position: absolute;
+    top: 5rem;
+    right: 3rem;
 }
 
 .food-for-you-wrapper h1 {
@@ -134,4 +248,71 @@ input {
 
 .food_type{
     cursor: pointer;
+}
+
+.box {
+    --size: 10px;
+    --p: 10px;
+    --R: 20px /*sqrt(var(--size)*var(--size) + var(--p)*var(--p))*/;
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+  
+    mask:
+    radial-gradient(var(--R) at 50% calc(var(--size) + var(--p)), #000 99%, #0000 101%) 
+      calc(50% - 2*var(--size)) 0 / calc(4 * var(--size)) 100%,
+    radial-gradient(var(--R) at 50% calc(-1*var(--p)), #0000 99%, #000 101%) 
+      50% var(--size)/calc(4 * var(--size)) 100% repeat-x;
+    background: #FFF7EE;  
+    border: none;
+  }
+
+  .good-deal {
+    height: 68px;
+    background-color: #000;
+    width: 100%;
+  }
+
+  .good-deal p {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 68px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.footer-wrapper {
+    padding: 3rem 5rem;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    display: flex;
+}
+
+.footer-wrapper .footer-logo {
+    width: calc(100% / 3);
+}
+
+.footer-wrapper .footer-logo img {
+    width: 70%;
+}
+
+.footer-wrapper .footer-contact {
+    text-align: right;
+    width: calc(66.6% / 3);
+}
+
+.footer-wrapper h3 {
+    font-family: 'SVN-Gratelos';
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 35px;
+    letter-spacing: 0em;
+}
+
+.footer-wrapper p {
+    height: 1rem;
 }

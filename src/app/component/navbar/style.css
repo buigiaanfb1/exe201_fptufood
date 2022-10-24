@@ -1,10 +1,10 @@
 .top-bar {
-  /* position: fixed; */
+  position: fixed;
   top: 37px;
   left: 0;
   width: 100vw;
   height: 68px;
-  z-index: 99999999;
+  z-index: 999;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -14,7 +14,7 @@
 }
 
 .on-sale-wrapper {
-  /* position: fixed; */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -42,6 +42,7 @@ p {
 }
 
 .links {
+  width: calc(100% / 3);
   display: flex;
   align-items: center;
   height: 100%;
@@ -60,6 +61,7 @@ li {
   display: inline-block;
   margin: 0 1rem;
   font-weight: 700;
+  cursor: pointer;
 }
 
 
@@ -69,7 +71,7 @@ li {
   font-size: large;
   font: 5rem;
   display: inline-block;
-  margin: 0 0.75rem;
+  margin: 0 0.5rem;
 
 }
 
@@ -86,7 +88,10 @@ li {
 }
 
 .icon-items {
-  margin: 0 2rem;
+  width: calc(100% / 3);
+  display: flex;
+  justify-content: right;
+  padding-right: 2.5rem;
 }
 
 .keyword_wrapper p {
@@ -98,14 +103,13 @@ li {
 }
 
 .logo {
-  width: 76px;
-  margin-left: 50px;
- /* border: 1px solid black; */
- height: 65px;
+  width: calc(100% / 3);
+  height: 65px;
 }
 
 .logo img {
-  width: 100%;
-  height: 100%;
+  width: 30%;
+  height: 105%;
   object-fit: contain;
+  cursor: pointer;
 }

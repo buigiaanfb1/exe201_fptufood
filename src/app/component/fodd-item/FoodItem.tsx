@@ -23,20 +23,25 @@ const FoodItem: React.FC<Props> = ({ item }) => {
         <div className="food-item-img-title">
           <img src={item?.data?.image} alt="food" />
           <p>{item?.data?.name}</p>
-        </div>
-        <div className="food-item-price">
-          <p>{item?.data?.price}.000 VNĐ  </p>
           <Button
-            style={{ background: "white", borderColor: "white" }}
+            className="view-detail-button"
             onClick={() => {
-              dispatch(setItemDetail({ value: item }))
-              dispatch(setModalVisible({ modal: ModalList.ITEM_INFO_MODAL, visible: true }))
+              dispatch(setItemDetail({ value: item }));
+              dispatch(
+                setModalVisible({
+                  modal: ModalList.ITEM_INFO_MODAL,
+                  visible: true,
+                })
+              );
             }}
           >
-            Xem Chi Tiết
+            Chi Tiết
           </Button>
+        </div>
+        <div className="food-item-price">
+          <p>{item?.data?.price}.000 VNĐ </p>
           <PlusOutlined
-            style={{ fontSize: '1.25rem', height: '20px' }} 
+            style={{ fontSize: '1.25rem', height: '20px' }}
             onClick={() => {
               dispatch(addToCart({ item }));
               handleNotification(true, 'Added to cart ! ');
