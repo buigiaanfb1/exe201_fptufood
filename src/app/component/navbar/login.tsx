@@ -10,7 +10,10 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { setModalVisible } from '../../slice/modal';
 import { ModalList } from '../../util/constant';
 import logo from '../../asset/logo.jpg';
+import { useNavigate } from 'react-router-dom';
 const Navbar: React.FC = () => {
+
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { cart, totalItemInCart } = useAppSelector((state) => state.cart);
   return (
@@ -25,14 +28,14 @@ const Navbar: React.FC = () => {
           </div>
           <ul>
             <li>Shop</li>
-            <li>About us</li>
-            <li>Contact us</li>
+            <li onClick={() => { navigate('/aboutUs') }} >About us</li>
+            <li onClick={() => { navigate('/contactUs') }} >Contact us</li>
             <li>Policy</li>
           </ul>
         </div>
 
         <div className="icon-items">
-        <SearchOutlined
+          <SearchOutlined
             style={{ fontSize: '1.5rem', color: '#ee4d2d' }}
             className="cart-icon"
           />
@@ -55,7 +58,7 @@ const Navbar: React.FC = () => {
               );
             }}
           />
-          
+
         </div>
       </div>
     </>
