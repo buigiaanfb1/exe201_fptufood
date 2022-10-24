@@ -161,7 +161,7 @@ input {
 .container-services {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .food-for-you-wrapper {
