@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import FoodItem from '../../component/fodd-item/FoodItem';
 import Navbar from '../../component/navbar/login';
 import { FoodItemModel } from '../../models/FoodItem';
@@ -26,6 +26,9 @@ import { setUser } from '../../slice/user';
 import { User } from '../../models/user';
 
 const HomePage: React.FC = () => {
+  const aboutUsRef = useRef<any>(null);
+  const contactUsRef = useRef<any>(null);
+  const homeRef = useRef<any>(null);
   const [foodList, setFoodList] = useState<FoodItemModel[]>([]);
   const dispatch = useAppDispatch();
   const { listItems } = useAppSelector((state) => state.items);
@@ -50,9 +53,19 @@ const HomePage: React.FC = () => {
     dispatch(setUser({ value: user }));
   }, []);
 
+  const executeScroll = (ref: any) =>
+    ref.current.scrollIntoView({
+      behavior: 'smooth',
+    });
+
   return (
     <>
-      <Navbar />
+      <Navbar
+        contactUsRef={contactUsRef}
+        aboutUsRef={aboutUsRef}
+        homeRef={homeRef}
+        onScroll={executeScroll}
+      />
       <div className="background-wrapper">
         <div className="slogan">
           <h1>ĐẶT MÓN NGON</h1>
@@ -60,7 +73,7 @@ const HomePage: React.FC = () => {
           <button>đặt hàng ngay</button>
         </div>
       </div>
-      <div className="introduce-services">
+      <div ref={homeRef} className="introduce-services">
         <div className="container-services">
           <div
             className="food_type"
@@ -103,7 +116,7 @@ const HomePage: React.FC = () => {
         </div>
         <img src={gooddeal} />
       </div>
-      <div className="about-us-wrapper">
+      <div ref={aboutUsRef} className="about-us-wrapper">
         <div className="box"></div>
         <img src={ffood} className="ffood-circle" />
 
@@ -124,7 +137,7 @@ const HomePage: React.FC = () => {
           <p>Cảm ơn mọi người đã đồng hành và ủng hộ F.FOOD!</p>
         </div>
       </div>
-      <div className="footer-wrapper">
+      <div ref={contactUsRef} className="footer-wrapper">
         <div className="footer-logo">
           <img src={logo} />
         </div>

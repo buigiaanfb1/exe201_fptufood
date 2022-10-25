@@ -11,7 +11,20 @@ import { setModalVisible } from '../../slice/modal';
 import { ModalList } from '../../util/constant';
 import logo from '../../asset/logo.png';
 import { useNavigate } from 'react-router-dom';
-const Navbar: React.FC = () => {
+
+interface NavbarProps {
+  contactUsRef?: any;
+  aboutUsRef?: any;
+  homeRef?: any;
+  onScroll?: any;
+}
+
+const Navbar: React.FC<NavbarProps> = ({
+  contactUsRef,
+  aboutUsRef,
+  homeRef,
+  onScroll,
+}: NavbarProps): any => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { cart, totalItemInCart } = useAppSelector((state) => state.cart);
@@ -25,21 +38,23 @@ const Navbar: React.FC = () => {
           <ul>
             <li
               onClick={() => {
-                navigate('/');
+                onScroll(homeRef);
               }}
             >
               Đặt hàng
             </li>
             <li
               onClick={() => {
-                navigate('/aboutUs');
+                // navigate('/aboutUs');
+                onScroll(aboutUsRef);
               }}
             >
               Về chúng tôi
             </li>
             <li
               onClick={() => {
-                navigate('/contactUs');
+                // navigate('/contactUs');
+                onScroll(contactUsRef);
               }}
             >
               Liên hệ

@@ -20,34 +20,39 @@ const FoodItem: React.FC<Props> = ({ item }) => {
   return (
     <>
       <div className="food-item">
-        <div className="food-item-img-title">
-          <img src={item?.data?.image} alt="food" />
-          <p>{item?.data?.name}</p>
-          <Button
-            className="view-detail-button"
-            onClick={() => {
-              dispatch(setItemDetail({ value: item }));
-              dispatch(
-                setModalVisible({
-                  modal: ModalList.ITEM_INFO_MODAL,
-                  visible: true,
-                })
-              );
-            }}
-          >
-            Chi Tiết
-          </Button>
-        </div>
-        <div className="food-item-price">
-          <p>{item?.data?.price}.000 VNĐ </p>
-          <PlusOutlined
-            style={{ fontSize: '1.25rem', height: '20px' }}
-            onClick={() => {
-              dispatch(addToCart({ item }));
-              handleNotification(true, 'Added to cart ! ');
-            }}
-          />
-          {/* <Button
+        <div className="food-item-nested">
+          <div className="food-item-img-title">
+            <p>{item?.data?.name}</p>
+            <div className="wrapper-img-button">
+              <img src={item?.data?.image} alt="food" />
+              <div className="wrapper-img-button-overlay">
+                <Button
+                  className="view-detail-button"
+                  onClick={() => {
+                    dispatch(setItemDetail({ value: item }));
+                    dispatch(
+                      setModalVisible({
+                        modal: ModalList.ITEM_INFO_MODAL,
+                        visible: true,
+                      })
+                    );
+                  }}
+                >
+                  Chi Tiết
+                </Button>
+              </div>
+            </div>
+          </div>
+          <div className="food-item-price">
+            <p>{item?.data?.price}.000 VNĐ </p>
+            <PlusOutlined
+              style={{ fontSize: '1.25rem', height: '20px', color: '#fff' }}
+              onClick={() => {
+                dispatch(addToCart({ item }));
+                handleNotification(true, 'Added to cart ! ');
+              }}
+            />
+            {/* <Button
             className="item-btn"
             type="primary"
             style={{ background: '#ee4d2d', borderColor: '#ee4d2d' }}
@@ -57,6 +62,7 @@ const FoodItem: React.FC<Props> = ({ item }) => {
           >
             Reomve From Cart
           </Button> */}
+          </div>
         </div>
       </div>
     </>

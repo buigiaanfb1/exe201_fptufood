@@ -161,7 +161,7 @@ input {
 .container-services {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .food-for-you-wrapper {
@@ -251,6 +251,7 @@ input {
 
 .food_type{
     cursor: pointer;
+    padding: 0 5rem;
 }
 
 .box {
